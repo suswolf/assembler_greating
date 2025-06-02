@@ -1,1 +1,1 @@
-## Just a greeting in assembler
+## Just a greeting in assembly
