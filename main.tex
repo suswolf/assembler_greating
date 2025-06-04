@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+
+
+\title{Resumen Instrucciones Assembly}
+\author{Jesús Muñoz, 27.188.137}
+\date{Junio, 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Instrucciones}
+
+\begin{tabular}{|c|m {9cm}| c |}
+    \hline
+    Instrucción & Descripción & Ejemplo\\ \hline
+     $add$ & Suma los dos últimos registros y los asigna al primero, no tiene mayor ciencia & add Ss1, Ss2, Ss3\\ \hline
+     $addi$ & Suma igual pero con una constante. Usamos constantes negativas para restar & addi Ss1, Ss2, 100\\ \hline
+     $sub$ & Resta igual que add suma & sub Ss1, Ss2, Ss3\\ \hline
+     $lw$ & (Load Word) Carga una palabra de la memoria hasta el nivel de registro. Colocamos un numero que indica la posicion en memoria & lw Ss1, 100(Ss2)\\ \hline
+     $sw$ & (Store Word) Guarda una palabra en la memoria, al contrario que lw & lw Ss1, 100(Ss2)\\ \hline
+     $sll$ & (Shift Left Logical) Desplazamiento a la izquierda. Usado con numeros que son la potencia de dos para artificios con registros (nada claro) & sll Ss1, Ss2, 10\\ \hline
+     $srl$ & Lo mismo que el anterior, pero hacia la derecha & srl Ss1, Ss2, 10\\ \hline
+     $beq$ & (Branch on Equal) Verifica una igualdad y hace un salto a una linea determinada. Parecido a un IF, pero hay que decir hacia donde salta, en este caso 'L' & beq Ss1, Ss2, L\\ \hline
+     $bne$ & (Branch on Not Equal) Mismo que el anterior, pero verifica la desigualdad & bne Ss1, Ss2, L\\ \hline
+     $slt$ & (Set on Less Than) Verifica si el segundo es menor que el tercero, y le da un valor de verdadero o falso al primero dependiendo de la respuesta & slt Ss1, Ss2, Ss3\\ \hline
+     $slti$ & Mismo que el anterior pero con una constante en lugar del tercer registro & slti Ss1, Ss2, 100 \\ \hline
+     $j$ & (Jump) Salta a la direccion indicada, que en la realidad esta multiplicada por 4, porque cada palabra tiene 4 bytes o 32 bits en MIPS & j 2500\\ \hline
+     $jal$ & (Jump And Link) Salta a la direccion indicada como el anterior, pero deja un regitro 'Sra', que sirve para luego volver al punto de partida & jal 2500 \\ \hline
+     $jr$ & (Jump Register) Salta al registro, por lo general 'Sra' que se crea con antelacion & jr Sra\\ \hline
+     
+
+\end{tabular}
+
+\section{Registros principales}
+
+\begin{tabular}{|c|m {10cm}|}
+    \hline
+    S$zero$ & Vale 0 siempre \\ \hline
+    S$ra$ & Guarda la direccion de retorno para volver despues de completar un procedimiento \\ \hline
+    S$v0$ - S$v1$ & Contienen valores de retorno de funciones. Solo son dos \\ \hline
+    S$a0$ - S$a3$ & Son para valores de entrada y parametros de funciones. Solo son 4 \\ \hline
+    S$t0$ - S$t9$ & Son registros temporales que se usan para hacer calculos y no se preservan en procedimientos \\ \hline
+    S$s0$ - S$s7$ & Registros guardados, usados para almacenar valores que pueden ser usados en distintas funciones y procedimientos \\ \hline
+    S$gp$ & Global pointer. Para el valor del puntero global \\ \hline
+    S$sp$ & Stack pointer. Para el valor del puntero de pila \\ \hline
+    S$fp$ & Frame pointer. Para el valor del puntero de marco. No se que es por ahora \\ \hline
+    
+
+\end{tabular}
+
+\end{document}
